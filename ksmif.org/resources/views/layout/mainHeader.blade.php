@@ -7,10 +7,11 @@
         background-image: url("images/icon/background.png");
         position: relative;
         width: 100%;
+        margin: 0px;
+        bottom: 0px;
         animation-name: bg-gerak;
         animation-iteration-count: infinite;
         animation-duration: 10s;
-        width: 100%;
     }
 
     @keyframes bg-gerak {

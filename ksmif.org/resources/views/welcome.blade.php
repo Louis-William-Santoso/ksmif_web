@@ -13,7 +13,7 @@
         }
         @keyframes lompat{
             0%      {transform: translateY(0);}
-            100%    {transform: translateY(-20px);}
+            100%    {transform: translateY(-30px);}
         }
     </style>
 
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div id="arrow-scroll" class="text-2xl mt-10 bottom-0">
+        <div id="arrow-scroll" class="text-2xl mt-9">
             <p>Scroll This Page</p>
             <img class="ml-11 w-10 relative" src="images/icon/arrow.svg" type="image/svg+xml">
         </div>
