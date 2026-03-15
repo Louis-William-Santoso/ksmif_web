@@ -4,7 +4,7 @@
 
         <div class="flex gap-1.5">
             <img src="/images/icon/mail.svg"></img>
-            <a href="mailto:ksmif@ormawa.ubaya.ac.id">EMAIL : ksmif@ormawa.ubaya.ac.id</a>
+            <a href='mailto:{{getenv('MAIL_USERNAME');}}'>EMAIL : {{getenv('MAIL_USERNAME');}}</a>
         </div>
         
         <div class="flex gap-1.5">
@@ -14,19 +14,19 @@
 
         <div class="flex gap-1.5">
             <img style="height: 24px" src="/images/icon/line.svg">
-            <a href="">Line : 0812345678</a>
+            <a href="">LINE : @test</a>
         </div>
         <p class="text-[15px]">
-        Made with love Creative Design Department 2026<br>
-        Copyright ©KSM-IF
+        Copyright © KSM-IF 2026 <br>
+        Made with love from CDD & HRDD
         </p>
     </div>
     <div class="sm:mt-6">
-        <h2 class="text-3xl">Present By:</h2>
+        <h2 class="text-3xl">Presented By:</h2>
         <div class="flex gap-2">
-            <img style="height:50px" src="/images/icon/logo-ubaya-w.webp" alt="">
-            <img style="height:40px; filter:brightness(0%) invert(100%)" src="/images/icon/Logo-Teknik-Informatika.webp">
-            <img style="height:50px; filter:invert(100%)" src="/images/icon/ksmHytam.svg">
+            <img style="height:40px" src="/images/icon/logo-ubaya-w.webp" alt="">
+            <img style="height:35px; filter:brightness(0%) invert(100%)" src="/images/icon/Logo-Teknik-Informatika.webp">
+            <img style="height:40px; filter:invert(100%)" src="/images/icon/ksmHytam.svg">
         </div>
     </div>
 </footer>
@@ -55,5 +55,5 @@ function responsiveDocs(){
     }
 }
 
-
+$('#mobile-nav').click();
 </script>

@@ -13,3 +13,11 @@
     font-family: 'Jersey10';
     src: url('../../public/fonts/Jersey10-Regular.ttf');
 }
+@font-face {
+    font-family: 'Oi';
+    src: url('../../public/fonts/Oi-Regular.ttf');
+}
+@font-face {
+    font-family: 'Bitcount';
+    src: url('../../public/fonts/Bitcount-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf');
+}
