@@ -40,7 +40,7 @@ function responsiveDocs(){
     let docWidth  = $(document).width();
     let winHeight = $(window).height();
     console.log(winHeight);
-    if(docWidth<640){
+    if(docWidth<1260){
         $('#desktop-nav').attr('hidden', '');
         $('#mobile-nav').removeAttr('hidden');
         $('footer').removeClass('flex');
