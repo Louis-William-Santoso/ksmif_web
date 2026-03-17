@@ -8,43 +8,34 @@
     <script src="lib/jquery.js"></script>
     @vite('resources/css/app.css')
     <style>
-        body{
-            background-image: url("images/icon/background.webp");
-            position: relative;
+        body {
             width: 100%;
             margin: 0px;
-            bottom: 0px;
-            animation-name: bg-gerak;
-            animation-iteration-count: infinite;
-            animation-duration: 10s;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: -235px;
+            left: -499px;
+            width: 200%;
+            height: 200%;
+            background: repeat 499px 235px url("images/icon/background.svg");
+            animation: bg-gerak 2s ease infinite;
         }
 
         @keyframes bg-gerak {
-            0%   {
-                background-position-x: 0%;
-                background-position-y: 0%;
-            }
-            25%  {
-                background-position-x: 25%;
-                background-position-y: 25%;
-            }
-            50%  {
-                background-position-x: 50%;
-                background-position-y: 50%;
-            }
-            75%  {
-                background-position-x: 75%;
-                background-position-y: 75%;
+            0% {
+                transform: translate(0px, 0px);
             }
             100% {
-                background-position-x: 100%;
-                background-position-y: 100%;
+                transform: translate(499px, 235px);
             }
         }
     </style>
 </head>
 <body>
-    @include ('layout.loading')
+    <div class="background-pattern"></div>
+    @include('layout.loading')
     @includeWhen($navbar != "homepage", 'layout.mainNavbar')
     @yield('content')
     @include('layout.mainFooter')
