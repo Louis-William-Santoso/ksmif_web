@@ -53,7 +53,7 @@
 
             <div class="flex text-3xl mt-14">
                 <a class="mr-16 text-white bg-black p-3 pr-4 rounded-2xl" href="">Join Us</a>
-                <a class="p-3 rounded-2xl border-2 backdrop-blur-sm" href="">About Us</a>
+                <a class="p-3 rounded-2xl border-2 backdrop-blur-sm" href="#aboutus">About Us</a>
             </div>
         </div>
 
@@ -73,8 +73,8 @@
     </div>
 
     {{-- Our Vision --}}
-    <div id="our-vision" class="font-['Jersey10'] md:text-4xl text-2xl grid place-items-center m-14 sm:p-14 ">
-        <h1 class="text-6xl te">Our Vision</h1>
+    <div id="our-vision" class="font-['Jersey10'] md:text-4xl text-2xl grid place-items-center m-14 sm:p-14">
+        <h1 class="text-6xl te" >Our Vision</h1>
         <p > To be an organization capable of accommodating, expanding knowledge, and realizing the aspirations of engineering faculty students related to Computer Science.</p>
     </div>
 
@@ -122,6 +122,9 @@
     setTimeout(() => {
         $('#header').addClass('text-focus-in');
     }, 2000);
+
+    // belum beres toggle
+    document.querySelectorAll('.active')
 
 </script>
 @endsection
