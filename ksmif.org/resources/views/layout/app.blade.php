@@ -57,7 +57,7 @@
     </div>
 
     @include('layout.loading')
-    @includeWhen($navbar != "homepage", 'layout.mainNavbar')
+    @includeWhen($data['navbar'] != "homepage", 'layout.mainNavbar')
     @yield('content')
     @include('layout.mainFooter')
 </body>

@@ -33,7 +33,7 @@
                 <img class="h-9" src="images/icon/home.svg" alt="" type="image/svg+xml">
                 <p>Homepage</p>
             </a>
-            <a href="/about-us" class="nav-link flex p-2.5 w-full rounded-2xl border-2">
+            <a href="/our-team" class="nav-link flex p-2.5 w-full rounded-2xl border-2">
                 <img class="h-9" src="images/icon/people.svg" alt="" type="image/svg+xml">
                 <p>Our Team</p>
             </a>
@@ -67,14 +67,35 @@
         }
     );
     
+    let indexNav = @json($data['navbar']);
+    if(indexNav == 'ourTeam'){
+        $('nav-link').removeClass('nav-click');
+        $('.nav-link').eq(1).addClass('nav-click');
+    }
+    else if(indexNav == 'bursaSoal'){
+
+    }
+    else{
+        $('nav-link').removeClass('nav-click');
+        $('.nav-link').eq(0).addClass('nav-click');
+    }
+    
+
 </script>
 <style>
     .nav-hover{
         color : white;
         background-color: rgba(0, 0, 0, 0.683);
     }
-    
     .nav-hover img {
     filter: invert(1);
     }
+
+    .nav-click{
+        color : white;
+        background-color: rgba(0, 0, 0, 0.683);
+    }
+    .nav-click img {
+    filter: invert(1);
+    }    
 </style>

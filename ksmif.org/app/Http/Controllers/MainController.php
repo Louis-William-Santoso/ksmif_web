@@ -6,13 +6,13 @@ use Illuminate\Routing\Controller;
 
 class MainController extends Controller
 {
-    function navbar_page($pageName='homepage'){
-        
-        if($pageName == 'homepage'){
-            return view('welcome', ['navbar' => $pageName]);
-        }
-        else{
-            return response()->json(['navbar' => $pageName]);
-        }
+    function homepage(){
+        $data=['navbar' => 'homepage'];
+        return view('welcome', compact('data'));
+    }
+
+    function ourTeam(){
+        $data=['navbar' => 'ourTeam'];
+        return view('ourTeam', compact('data'));
     }
 }
