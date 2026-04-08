@@ -1,7 +1,7 @@
 <h2 align="center">Selamat datang di repository Website KSM-IF</h2>
 <div style="overflow:hidden;">
 <h3>ERD :</h3>
-<img src="ksmif.org/database/ERD/erd.svg" style="height:50rem; top:0; margin-bottom:-30rem; margin-top:-2rem">
+<img src="ksmif.org/database/ERD/erd.png" style="height:50rem;">
 </div>
 <h3 align="left">Todo list :</h3>
 <p align="left">
