@@ -13,9 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('matkul', function (Blueprint $table){
-            $table->id();
-            $table->string('nama_matkul', 20);
-            $table->string('code', 7);
+            $table->string('id', 8)->primary();
+            $table->string('nama_matkul', 50);
             $table->timestamps();
         });    
 
@@ -23,7 +22,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('matkul_id');
             $table->foreignId('uploaded_by')->constrained('users');
-            $table->enum('tipe',['UTS', 'UAS', 'Quiz']);
+            $table->enum('tipe',['UTS', 'UAS', 'Quiz', 'Latihan']);
+            $table->string('path');
             $table->timestamps();
         });
     }

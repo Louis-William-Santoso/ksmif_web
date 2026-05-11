@@ -28,7 +28,7 @@ return new class extends Migration
             $table->foreignId('users_id');
             $table->year('period');
             $table->enum('division', ['BPH', 'IRD', 'PRD', 'HRDD', 'CDD']);
-            $table->enum('role', ['Koor', 'WaKoor', 'Anggota']);
+            $table->enum('role', ['Koor', 'WaKoor', 'Anggota','Ketua','Wakil Ketua', 'Sekretaris', 'Bendahara']);
             $table->timestamps();
         });
 

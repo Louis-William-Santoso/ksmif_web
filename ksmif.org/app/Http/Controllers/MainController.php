@@ -13,7 +13,7 @@ class MainController extends Controller
     }
 
     function ourTeam(){
-        $team = User::join('team', 'users.id', '=', 'team.user_id')
+        $team = User::join('members', 'users.id', '=', 'members.users_id')
                 ->get();
 
         $data=['navbar' => 'ourTeam',

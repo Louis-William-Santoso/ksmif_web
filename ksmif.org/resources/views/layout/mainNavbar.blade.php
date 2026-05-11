@@ -14,12 +14,9 @@
                 <p>Bursa Soal</p>
             </a>
         </div>
-        <div class="grid gap-x-4 grid-cols-2 h-fit">
-            <a href="" class="bg-black text-white p-1.5 pl-2.5 rounded-2xl">
-                SignUp
-            </a>
-            <a href="" class="border-2 rounded-2xl p-1.5 backdrop-blur mr-5">
-                Login
+        <div class="m-2.5 h-fit">
+            <a href="" class="bg-black text-white p-2 rounded-2xl">
+                SignUp / LogIn
             </a>
         </div>
     </div>
