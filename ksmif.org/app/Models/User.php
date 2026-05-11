@@ -4,8 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
+use function Illuminate\Support\years;
 
 class User extends Authenticatable
 {
@@ -18,9 +21,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'username',
+        'fullname',
         'password',
+        'email',
+        'NRP',
+        'social_media'
     ];
 
     /**
@@ -44,5 +50,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function usersToMembers():HasMany
+    {
+        return $this->hasMany(Members::class);
+    }
+
+    public function usersToBursaSoal():HasMany
+    {
+        return $this->hasMany(BursaSoal::class);
     }
 }

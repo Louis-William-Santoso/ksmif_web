@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('NRP', 9)->nullable();
             $table->string('status');
+            $table->json('social_media');
             $table->rememberToken();
             $table->timestamps();
         });
