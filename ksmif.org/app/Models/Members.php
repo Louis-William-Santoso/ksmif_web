@@ -8,7 +8,7 @@ class Members extends Model
 {
     protected $fillable = [
         'users_id',
-        'periode',
+        'period',
         'division',
         'role' //['Koor', 'WaKoor', 'Anggota','Ketua','Wakil Ketua', 'Sekretaris', 'Bendahara']
     ];

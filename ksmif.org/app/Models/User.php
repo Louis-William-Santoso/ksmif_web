@@ -22,10 +22,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'fullname',
+        'full_name',
         'password',
         'email',
         'NRP',
+        'status',
         'social_media'
     ];
 
@@ -52,13 +53,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function usersToMembers():HasMany
+    public function members():HasMany
     {
-        return $this->hasMany(Members::class);
+        return $this->hasMany(Members::class,'users_id','id');
     }
 
-    public function usersToBursaSoal():HasMany
+    public function bursa_soal():HasMany
     {
-        return $this->hasMany(BursaSoal::class);
+        return $this->hasMany(BursaSoal::class,'uploaded_by','id');
     }
 }
