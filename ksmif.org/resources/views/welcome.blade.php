@@ -46,9 +46,9 @@
     <div class="h-screen justify-center-safe place-items-center grid sm:mt-[5%] font-['Jersey10'] mt-[20%]">
         <div id="header" class="grid justify-center place-items-center">
             <iframe src="images/icon/ksmHytam.svg" type="image/svg+xml"></iframe>
-            <h3 class="sm:text-3xl sm:mt-3 text-2xl">Kelompok Studi Mahasiswa Informatika</h3>
-            <h3 class="sm:text-3xl text-2xl">UNIVERSITAS SURABAYA</h3>
-            <h1 class="sm:text-6xl text-4xl">"We Not Me"</h1>
+            <h1 class="sm:text-3xl sm:mt-3 text-2xl">Kelompok Studi Mahasiswa Informatika</h1>
+            <h2 class="sm:text-3xl text-2xl">UNIVERSITAS SURABAYA</h2>
+            <h2 class="sm:text-6xl text-4xl">"We Not Me"</h2>
 
             <div class="flex text-3xl mt-14">
                 <a class="mr-16 text-white bg-black p-3 pr-4 rounded-2xl" href="">Join Us</a>
@@ -67,19 +67,19 @@
 
     {{-- About Us --}}
     <div id="aboutus" class="font-['Jersey10'] md:text-4xl text-2xl m-14">
-        <h1 class="text-6xl">ABOUT US</h1>
+        <h2 class="text-6xl">ABOUT US</h2>
         <p>An Informatics Engineering student organization, established on the University of Surabaya Campus since 1998. We are located at the TF 4.10 Building, University of Surabaya Tenggilis.</p>
     </div>
 
     {{-- Our Vision --}}
     <div id="our-vision" class="font-['Jersey10'] md:text-4xl text-2xl grid place-items-center m-14 sm:p-14">
-        <h1 class="text-6xl te" >Our Vision</h1>
+        <h2 class="text-6xl te" >Our Vision</h2>
         <p > To be an organization capable of accommodating, expanding knowledge, and realizing the aspirations of engineering faculty students related to Computer Science.</p>
     </div>
 
     {{-- DEPARTMENT --}}
-    <div id="department" class="font-['Jersey10'] sm:text-3xl text-2xl grid place-items-center mb-20">
-        <h1 class="text-6xl">DEPARTMENT</h1>
+    <div id="department" class="font-['Jersey10'] sm:text-3xl text-2xl flex flex-col items-center mb-20">
+        <h2 class="text-6xl">DEPARTMENT</h2>
 
         {{-- Button --}}
         <form action="/our-team" method="GET" class="flex mb-8">
@@ -89,31 +89,47 @@
             <img src="/images/icon/click_this.webp" alt="" class="absolute ml-44">
         </form>
 
-        <div class="grid lg:grid-cols-2 grid-cols-1 place-items-center gap-14">
-            <div id="department-BPH" class="lg:col-span-2 lg: grid place-items-center">
-                <h2 class="sm:text-5xl text-4xl">BPH</h2>
-                <h3>Badan Pengurus Harian</h3>
+        <div class="w-full grid lg:grid-cols-2 grid-cols-1 gap-14 text-center">
+            <div id="department-BPH" class="lg:col-span-2 grid place-items-center">
+                <h3 class="sm:text-5xl text-4xl">BPH</h3>
+                <h4>(Badan Pengurus Harian)</h4>
+                <p>The foundation of the organization that keeps everything aligned—streamlining the flow,</p>
+                <p>sustaining the rhythm, and guiding every step forward with purpose and momentum.</p>
+                <br>
+                <p><i>One movement, driven by four essential roles:</i></p>
+                <p class="sm:text-5xl text-3xl">Chairperson • Vice-Chairperson • Secretary • Treasurer</p>
             </div>
 
             <div class="grid place-items-center" id="department-IRD">
-                <h2 class="sm:text-5xl text-4xl">IRD</h2>
-                <h3>Internal Relation Department</h3>
+                <h3 class="sm:text-5xl text-4xl">IRD</h3>
+                <h4>(Internal Relation Department)</h4>
+                <p>The team that holds KSM IF together.</p>
+                <p>Making room for new friendships, real support,</p>
+                <p>and growth every step of the way.</p>
             </div>
 
             <div class="grid place-items-center" id="department-PRD">
-                <h2 class="sm:text-5xl text-4xl">PRD</h2>
-                <h3>Public Relation Department</h3>
+                <h3 class="sm:text-5xl text-4xl">PRD</h3>
+                <h4>(Public Relation Department)</h4>
+                <p>Behind every handshake between KSM IF</p>
+                <p>and the outside world. The team who translate ideas into clear communication, contacts into partnerships,</p>
+                <p>and keep KSM IF’s image shining bright</p>
             </div>
 
             <div class="grid place-items-center" id="department-HRDD">
-                <h2 class="sm:text-5xl text-4xl">HRDD</h2>
-                <h3>Human Resource</h3>
-                <h3>Development Department</h3>
+                <h3 class="sm:text-5xl text-4xl">HRDD</h3>
+                <h4>(Human Resource Development Department)</h4>
+                <p>An organization runs on its people.</p>
+                <p>Human Resource Development Department job is to </p>
+                <p>help every member update,grow, and unlock their best version.</p>
             </div>
 
             <div class="grid place-items-center" id="department-CDD">
-                <h2 class="sm:text-5xl text-4xl">CDD</h2>
-                <h3>Creative Design Department</h3>
+                <h3 class="sm:text-5xl text-4xl">CDD</h3>
+                <h4>(Creative Design Department)</h4>
+                <p>Every great moment tells a story.</p>
+                <p>The Creative Design Department captures it, preserves it,</p>
+                <p>and turns KSM-IF's warmest moments into memories that last.</p>
             </div>
         </div>
     </div>

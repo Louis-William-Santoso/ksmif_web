@@ -25,18 +25,21 @@
         <div id="mobile-nav" class="p-2 nav-link flex border-4 border-dashed rounded-2xl">
             <img class="h-9 ml-3" src="images/icon/menu.svg" alt="" type="image/svg+xml">
         </div>
-        <div id="mobile-nav-menu" hidden >
-            <a href="/" class="nav-link flex p-2.5 w-full rounded-2xl border-2">
+        <div id="mobile-nav-menu" class="rounded-2xl border-2" hidden>
+            <a href="/" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
                 <img class="h-9" src="images/icon/home.svg" alt="" type="image/svg+xml">
                 <p>Homepage</p>
             </a>
-            <a href="/our-team" class="nav-link flex p-2.5 w-full rounded-2xl border-2">
+            <a href="/our-team" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
                 <img class="h-9" src="images/icon/people.svg" alt="" type="image/svg+xml">
                 <p>Our Team</p>
             </a>
-            <a href="/bursa-soal" class="nav-link flex p-2.5 w-full rounded-2xl border-2">
+            <a href="/bursa-soal" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
                 <img class="h-9" src="images/icon/book.svg" alt="" type="image/svg+xml">
                 <p>Bursa Soal</p>
+            </a>
+            <a href="" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
+                <p>Login / SignUp</p>
             </a>
         </div>
     </div>
@@ -90,7 +93,7 @@
 
     .nav-click{
         color : white;
-        background-color: rgba(0, 0, 0, 0.683);
+        background-color: rgb(0, 0, 0);
     }
     .nav-click img {
     filter: invert(1);
