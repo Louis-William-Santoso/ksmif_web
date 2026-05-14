@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>KSM-IF 404</title>
-    <script src="lib/jquery.js"></script>
+    <title>KSM-IF 401</title>
+    <script src="./lib/jquery.js"></script>
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -14,9 +14,10 @@
             <img class="h-30" src="images/icon/ksmHytam.svg" type="image/svg+xml">
             <h3 class="lg:text-9xl sm:mt-3 text-7xl">401 Unauthorized</h3>
             <h3 class="sm:text-3xl text-2xl m-5 text-pretty">It looks like you have missing or invalid authentication credentials.</h3>
+            <a href="/" class="text-white p-5 bg-black text-5xl">Back To Homepage</a>
         </div>
     </div>
-    <div class="w-screen bottom-0 ">
+    <div class="w-full bottom-0 ">
     @include('layout.mainFooter')
     </div>
 </body>

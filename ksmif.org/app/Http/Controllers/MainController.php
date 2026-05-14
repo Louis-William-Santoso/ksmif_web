@@ -17,15 +17,23 @@ class MainController extends Controller
     function ourTeam(){
         try{
         $now = (time() <= strtotime('01-09-2026')) ? '2025':'2026';
-        $team = User::join('members', 'users.id', '=', 'members.users_id')
-                    ->where('period', $now) 
-                    ->get();
+        $member      = User::join('members', 'users.id', '=', 'members.users_id')
+                           ->where('period', $now) 
+                           ->get();
+        if($member->isEmpty())throw new Exception('',400);
 
-        $data=['navbar' => 'ourTeam',
-               'team'   => $team];
+        $allPeriode  = array_unique(Members::all('period')->toArray());
+        $allDivision = ['ALL','BPH', 'IRD', 'PRD', 'HRDD', 'CDD'];
+
+        $data=['navbar'   => 'ourTeam',
+               'member'   => $member->isEmpty(),
+               'period'   => $allPeriode,
+               'division' => $allDivision];
         }catch(Exception $ex){
             $data=['err'=> $ex->getMessage()];
+            return view("errors.{$ex->getCode()}");
         }
+        // return response()->json($data);
         return view('ourTeam', compact('data'));
     }
 
