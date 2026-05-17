@@ -15,32 +15,33 @@
             <s>Bikin layout navbar & footer</s>
         </td>
         <td>
-            Bikin database migration & seeder *(kalo gak malas)
+            <s>Bikin database migration & seeder *(kalo gak malas)</s>
         </td>
     </tr>
     <tr>
         <td>Bikin homepage</td>
         <td>
             Bikin routing
-            <br> - homepage
-            <br> - our division
+            <br> <s>- homepage </s>
+            <br> <s>- our division</s>
             <br> - bursa soal
             <br> - admin login
             <br> - profile manage
         </td>
     </tr>
     <tr>
-        <td>
+        <td><s>
             Bikin about us per divisi
             <br> - BPH
             <br> - CDD
             <br> - IRD
             <br> - PRD
             <br> - HRDD
+            </s>
         </td>
         <td>
             Bikin main controller & middleware
-            <br> - Ambil data member bedasarkan periode
+            <br> <s>- Ambil data member bedasarkan periode</s>
             <br> - bikin auth user
             <br> - ambil data bursa sesuai tahun & matklul
         </td>
