@@ -30,6 +30,7 @@ return new class extends Migration
             $table->year('period');
             $table->enum('division', ['BPH', 'IRD', 'PRD', 'HRDD', 'CDD']);
             $table->enum('role', ['Koor', 'WaKoor', 'Anggota','Ketua','Wakil Ketua', 'Sekretaris', 'Bendahara']);
+            $table->string('display_photo', 45)->nullable();
             $table->timestamps();
         });
 

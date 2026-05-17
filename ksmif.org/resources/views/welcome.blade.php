@@ -97,7 +97,7 @@
                 <p>sustaining the rhythm, and guiding every step forward with purpose and momentum.</p>
                 <br>
                 <p><i>One movement, driven by four essential roles:</i></p>
-                <p class="sm:text-5xl text-3xl">Chairperson • Vice-Chairperson • Secretary • Treasurer</p>
+                <p class="sm:text-5xl text-3xl">Ketua • Wakil-Ketua • Sekretaris • Bendahara</p>
             </div>
 
             <div class="grid place-items-center" id="department-IRD">

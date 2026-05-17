@@ -1,6 +1,6 @@
-<nav id="navbar" class="font-['Jersey10'] m-2.5 text-3xl sticky top-2 rounded-2xl">
+<nav id="navbar" class="font-['Jersey10'] m-2.5 text-3xl sticky top-2 rounded-2xl z-[3]">
     <div id="desktop-nav" class="flex justify-between">
-        <div id="desktop-nav-menu" class="flex w-fit border-4 border-dashed rounded-2xl gap-12 backdrop-blur-sm">
+        <div id="desktop-nav-menu" class="flex w-fit border-4 border-dashed rounded-2xl gap-12 backdrop-blur-sm bg-[#ffffff99]">
             <a href="/" class="nav-link flex p-2.5 w-fit rounded-2xl">
                 <img class="h-9" src="images/icon/home.svg" alt="" type="image/svg+xml">
                 <p>Homepage</p>
@@ -21,21 +21,21 @@
         </div>
     </div>
     
-    <div class="backdrop-blur-sm">    
+    <div class="backdrop-blur-sm bg-[#ffffff99]">    
         <div id="mobile-nav" class="p-2 nav-link flex border-4 border-dashed rounded-2xl">
-            <img class="h-9 ml-3" src="images/icon/menu.svg" alt="" type="image/svg+xml">
+            <img class="h-9 ml-3" src="/images/icon/menu.svg" alt="" type="image/svg+xml">
         </div>
         <div id="mobile-nav-menu" class="rounded-2xl border-2" hidden>
             <a href="/" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
-                <img class="h-9" src="images/icon/home.svg" alt="" type="image/svg+xml">
+                <img class="h-9" src="/images/icon/home.svg" alt="" type="image/svg+xml">
                 <p>Homepage</p>
             </a>
             <a href="/our-team" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
-                <img class="h-9" src="images/icon/people.svg" alt="" type="image/svg+xml">
+                <img class="h-9" src="/images/icon/people.svg" alt="" type="image/svg+xml">
                 <p>Our Team</p>
             </a>
             <a href="/bursa-soal" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
-                <img class="h-9" src="images/icon/book.svg" alt="" type="image/svg+xml">
+                <img class="h-9" src="/images/icon/book.svg" alt="" type="image/svg+xml">
                 <p>Bursa Soal</p>
             </a>
             <a href="" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">

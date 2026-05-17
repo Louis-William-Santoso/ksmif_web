@@ -6,14 +6,14 @@
     <meta name="description" content="KSM Informatika Universitas Surabaya (UBAYA), WE NOT ME"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="images/icon/tab-icon.png" />
-    <script src="lib/jquery.js"></script>
+    <script src="/lib/jquery.js"></script>
     @vite('resources/css/app.css')
     <style>
         html{
             scroll-behavior: smooth;
         }
         body{
-            background-image: url("images/icon/background.webp");
+            background-image: url("/images/icon/background.webp");
             position: relative;
             width: 100%;
             margin: 0px;
@@ -37,7 +37,7 @@
             left: -499px;
             width: calc(100% + 499px);
             height: calc(100% + 470px);
-            background: repeat 499px 235px url("images/icon/background.webp");
+            background: repeat 499px 235px url("/images/icon/background.webp");
             animation: bg-gerak 2s ease infinite;
         }
 
