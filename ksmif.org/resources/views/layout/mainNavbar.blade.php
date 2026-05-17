@@ -2,15 +2,15 @@
     <div id="desktop-nav" class="flex justify-between">
         <div id="desktop-nav-menu" class="flex w-fit border-4 border-dashed rounded-2xl gap-12 backdrop-blur-sm bg-[#ffffff99]">
             <a href="/" class="nav-link flex p-2.5 w-fit rounded-2xl">
-                <img class="h-9" src="images/icon/home.svg" alt="" type="image/svg+xml">
+                <img class="h-9" src="/images/icon/home.svg" alt="" type="image/svg+xml">
                 <p>Homepage</p>
             </a>
             <a href="/our-team" class="nav-link flex p-2.5 w-fit rounded-2xl">
-                <img class="h-9" src="images/icon/people.svg" alt="" type="image/svg+xml">
+                <img class="h-9" src="/images/icon/people.svg" alt="" type="image/svg+xml">
                 <p>Our Team</p>
             </a>
             <a href="/bursa-soal" class="nav-link flex p-2.5 w-fit rounded-2xl">
-                <img class="h-9" src="images/icon/book.svg" alt="" type="image/svg+xml">
+                <img class="h-9" src="/images/icon/book.svg" alt="" type="image/svg+xml">
                 <p>Bursa Soal</p>
             </a>
         </div>
