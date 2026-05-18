@@ -73,7 +73,8 @@
         $('.nav-link').eq(1).addClass('nav-click');
     }
     else if(indexNav == 'bursaSoal'){
-
+        $('nav-link').removeClass('nav-click');
+        $('.nav-link').eq(2).addClass('nav-click');
     }
     else{
         $('nav-link').removeClass('nav-click');

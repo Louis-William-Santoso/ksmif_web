@@ -15,7 +15,7 @@ class MainController extends Controller
         return view('welcome', compact('data'));
     }
 
-    function ourTeam(){
+    function getMember(){
         try{
         $now = (time() <= strtotime('01-09-2026')) ? '2025':'2026';
         $member      = User::join('members', 'users.id', '=', 'members.users_id')
@@ -143,8 +143,14 @@ class MainController extends Controller
         // $bursaSoal = BursaSoal::where('BursaSoal.year', '=', '2025')
         //              ->get();
 
-        // $data=['navbar' => 'ourTeam',
-        //        'bursaSoal'   => $bursaSoal];
-        return view('ourTeam', compact('data'));
+        $data=['navbar' => 'bursaSoal'];
+        return view('bursaSoal.bursaSoal', compact('data'));
+    }
+
+    function bursaSoalBy(Request $req){
+        $year = $req->query('year');
+
+        $data =[$year];
+        return response()->json($data);
     }
 }

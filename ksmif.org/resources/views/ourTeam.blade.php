@@ -90,7 +90,4 @@
             @endforeach
     </div>
 </div>
-<script>
-    // $('#members').html('<option>tess</option>');
-</script>
 @endsection
