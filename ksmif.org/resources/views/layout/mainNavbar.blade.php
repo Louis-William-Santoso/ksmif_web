@@ -1,4 +1,4 @@
-<nav id="navbar" class="font-['Jersey10'] m-2.5 text-3xl sticky top-2 rounded-2xl z-[3]">
+<nav id="navbar" class="font-['Jersey10'] m-2.5 text-3xl sticky top-2 rounded-2xl z-3">
     <div id="desktop-nav" class="flex justify-between">
         <div id="desktop-nav-menu" class="flex w-fit border-4 border-dashed rounded-2xl gap-12 backdrop-blur-sm bg-[#ffffff99]">
             <a href="/" class="nav-link flex p-2.5 w-fit rounded-2xl">
@@ -15,7 +15,7 @@
             </a>
         </div>
         <div class="m-2.5 h-fit">
-            <a href="" class="bg-black text-white p-2 rounded-2xl">
+            <a id="desktop-loginBtn" class="bg-black text-white p-2 rounded-2xl">
                 SignUp / LogIn
             </a>
         </div>
@@ -38,12 +38,25 @@
                 <img class="h-9" src="/images/icon/book.svg" alt="" type="image/svg+xml">
                 <p>Bursa Soal</p>
             </a>
-            <a href="" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
-                <p>Login / SignUp</p>
+            <a id="mobile-loginBtn" href="" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
+                Login / SignUp
             </a>
         </div>
     </div>
 </nav>
+
+<div id="loginPanel" class="fixed top-0 z-7 h-screen w-screen grid-cols-1 place-content-center place-items-center backdrop-blur-sm font-['Jersey10'] hidden">
+    <form method="POST" class="bg-white h-96 w-96 border rounded-2xl text-center text-4xl">
+        @csrf
+        <img id="closeLoginBtn" src="/images/icon/close.svg" alt="closeBtn" class="absolute ml-2 my-2">
+        <p class="text-5xl my-3">Welcome!</p>
+        <div>
+            <input type="text" name="username" id="username" placeholder="Username" class="border-b-2 text-center my-3">
+            <input type="password" name="password" id="password"  placeholder="Password" class="border-b-2 text-center my-3" onkeydown="if(e.key==='Enter'){e.preventDefault();}">
+        </div>
+        <button type="submit" class="bg-black py-4 w-[70%] text-white">Login</button>
+    </form>
+</div>
 <script>
     let mobileMenuClick = false;
     $('#mobile-nav').click(function () { 
@@ -81,7 +94,29 @@
         $('.nav-link').eq(0).addClass('nav-click');
     }
 
-    
+    $("#mobile-loginBtn").click(function (e) { 
+        e.preventDefault();
+        $('#loginPanel').removeClass('hidden');
+        $('#mobile-nav-menu').attr('hidden', 'true');
+        mobileMenuClick = true;
+    });
+
+    $("#desktop-loginBtn").click(function (e) { 
+        e.preventDefault();
+        $('#loginPanel').removeClass('hidden');
+    });
+
+    $("#closeLoginBtn").click(function (e) { 
+        e.preventDefault();
+        $('#loginPanel').addClass('hidden');
+    });
+
+    $('#username').keydown(function (e) { 
+        if(e.key=="Enter"){
+            e.preventDefault();
+            $('#password').focus();
+        }
+    });
 </script>
 <style>
     .nav-hover{
