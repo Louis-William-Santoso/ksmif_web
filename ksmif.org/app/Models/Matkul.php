@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Matkul extends Model
 {
@@ -11,4 +12,9 @@ class Matkul extends Model
         'id', 
         'nama_matkul',
     ];
+
+    public function bursa_soal():HasMany
+    {
+        return $this->hasMany(BursaSoal::class, 'matkul_id', 'id');
+    }
 }

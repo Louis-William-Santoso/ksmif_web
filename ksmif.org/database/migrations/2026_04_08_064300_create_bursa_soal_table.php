@@ -22,6 +22,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('matkul_id');
             $table->foreignId('uploaded_by')->constrained('users');
+            $table->string('tahun');
             $table->enum('tipe',['UTS', 'UAS', 'Quiz', 'Latihan']);
             $table->string('path');
             $table->timestamps();

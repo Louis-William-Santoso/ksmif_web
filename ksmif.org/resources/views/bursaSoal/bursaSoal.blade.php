@@ -54,9 +54,9 @@
     </form>
 </div>
 
-<div class="mx-1.5 border-2 border-dashed grid grid-cols-7 bg-[#ffffff99] backdrop-blur-xs mb-4 rounded-2xl">
+<div class="mx-1.5 border-2 border-dashed grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 bg-[#ffffff99] backdrop-blur-xs mb-4 rounded-2xl place-items-center">
     
-    <div class="grid grid-rows-4 max-h-72 max-w-52 bg-white shadow-black shadow-2xl mx-4 rounded-b-2xl my-4">
+    <div class="grid grid-rows-4 max-h-72 max-w-52 bg-white shadow-black shadow-2xl rounded-b-2xl my-4 mx-2 max-w-48">
         <div class="row-span-3 overflow-hidden">
             <img src="https://i.pinimg.com/originals/97/8e/04/978e043544b65dbf818ea9ff95faaa3d.jpg" alt="gambarSoal" class="w-full h-full object-cover">
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\User;
 use App\Models\Members;
+use App\Models\BursaSoal;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -140,11 +141,12 @@ class MainController extends Controller
     }
 
     function bursaSoal(){
-        // $bursaSoal = BursaSoal::where('BursaSoal.year', '=', '2025')
-        //              ->get();
+        $bursaSoal = BursaSoal::with('matkul','user')->get();
 
-        $data=['navbar' => 'bursaSoal'];
+        $data=['navbar'   => 'bursaSoal',
+               'bursaSoal'=> $bursaSoal];
         return view('bursaSoal.bursaSoal', compact('data'));
+        // return response()->json($data);
     }
 
     function bursaSoalBy(Request $req){
