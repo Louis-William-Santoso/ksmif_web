@@ -46,13 +46,14 @@
 </nav>
 
 <div id="loginPanel" class="fixed top-0 z-7 h-screen w-screen grid-cols-1 place-content-center place-items-center backdrop-blur-sm font-['Jersey10'] hidden">
-    <form method="POST" class="bg-white h-96 w-96 border rounded-2xl text-center text-4xl">
+    <form method="POST" action="/user-login" class="bg-white h-96 w-96 border rounded-2xl text-center text-4xl">
         @csrf
         <img id="closeLoginBtn" src="/images/icon/close.svg" alt="closeBtn" class="absolute ml-2 my-2">
         <p class="text-5xl my-3">Welcome!</p>
         <div>
-            <input type="text" name="username" id="username" placeholder="Username" class="border-b-2 text-center my-3">
-            <input type="password" name="password" id="password"  placeholder="Password" class="border-b-2 text-center my-3" onkeydown="if(e.key==='Enter'){e.preventDefault();}">
+            <input type="text" name="username" id="username" placeholder="Username" class="border-b-2 text-center my-3" required>
+            <input type="password" name="password" id="password"  placeholder="Password" class="border-b-2 text-center my-3" onkeydown="if(e.key==='Enter'){e.preventDefault();}" required>
+            <img  id="eyeIcon" src="/images/icon/eye.svg" alt="eye" class="fixed -mt-12 ml-80" onclick="togglePassword()">
         </div>
         <button type="submit" class="bg-black py-4 w-[70%] text-white">Login</button>
     </form>
@@ -117,6 +118,16 @@
             $('#password').focus();
         }
     });
+
+    function togglePassword() {
+        let input = document.getElementById("password");
+        console.log(input);
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
 </script>
 <style>
     .nav-hover{

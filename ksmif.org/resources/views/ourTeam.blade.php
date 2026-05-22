@@ -75,7 +75,7 @@
                 
                 <div class="grid xl:grid-cols-6 md:grid-cols-4n sm:grid-cols-3 grid-cols-2 gap-4 lg:mx-8 mx-2 my-4 justify-items-center" id="members">
                     @foreach($item as $i)
-                    <div class="border-2 border-dashed p-2 rounded-2xl w-56 backdrop-blur-sm">
+                    <div class="border-2 border-dashed p-2 rounded-2xl max-w-56 backdrop-blur-sm">
                         <p class="text-6xl">{{$i['division']}}</p>
                         <p class="text-4xl">{{$i['role']}}</p>
                         @if(is_null($i['display_photo']))
