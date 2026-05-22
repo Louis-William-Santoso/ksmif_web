@@ -15,9 +15,15 @@
             </a>
         </div>
         <div class="m-2.5 h-fit">
+            @if($data['auth'])
+            <a id="dashboard" href="/dashboard" class="bg-black text-white p-2 rounded-2xl">
+                Dashboard
+            </a>
+            @else    
             <a id="desktop-loginBtn" class="bg-black text-white p-2 rounded-2xl">
                 SignUp / LogIn
             </a>
+            @endif
         </div>
     </div>
     
@@ -38,9 +44,15 @@
                 <img class="h-9" src="/images/icon/book.svg" alt="" type="image/svg+xml">
                 <p>Bursa Soal</p>
             </a>
+            @if ($data['auth'])
+            <a id="dashboard" href="/dashboard" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
+                Dashboard
+            </a>
+            @else  
             <a id="mobile-loginBtn" href="" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
                 Login / SignUp
             </a>
+            @endif
         </div>
     </div>
 </nav>

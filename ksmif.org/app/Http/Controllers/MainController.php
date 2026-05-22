@@ -8,11 +8,12 @@ use App\Models\Members;
 use App\Models\BursaSoal;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     function homepage(){
-        $data=['navbar' => 'homepage'];
+        $data=['navbar' => 'homepage', 'auth' => Auth::check()];
         return view('welcome', compact('data'));
     }
 
@@ -53,6 +54,7 @@ class MainController extends Controller
                'period'     => $allPeriode,
                'division'   => $allDivision,
                'totalMembers'=> $totalMember,
+               'auth'     => Auth::check(),
                'member'   => [
                 'bph' => $BPH,
                 'ird' => $IRD,
@@ -127,6 +129,7 @@ class MainController extends Controller
                'division'    => $allDivision,
                'totalMembers'=> $totalMember,
                'member'      => $member,
+               'auth'        => Auth::check(),
                'selectedItem'=> [
                     'period'  => $period,
                     'division'=> $division
@@ -144,7 +147,9 @@ class MainController extends Controller
         $bursaSoal = BursaSoal::with('matkul','user')->get();
 
         $data=['navbar'   => 'bursaSoal',
-               'bursaSoal'=> $bursaSoal];
+               'bursaSoal'=> $bursaSoal,
+               'auth'     => Auth::check()
+               ];
         return view('bursaSoal.bursaSoal', compact('data'));
         // return response()->json($data);
     }
