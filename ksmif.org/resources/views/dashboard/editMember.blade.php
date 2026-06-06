@@ -1,8 +1,8 @@
 @extends('dashboard.layout.layout')
 
 @section('content')
-<div class="mx-4 my-4 overflow-y-auto" id="tableUsers"hidden>
-    <table>
+<div class="mx-4 my-4 overflow-y-auto">
+    <table id="tableUsers">
         <thead>
             <tr><th colspan="10" class="border">Edit Members</th></tr>
             <tr>
@@ -83,39 +83,75 @@
             @endforeach
         </tbody>
     </table>
+
+    <div hidden>
+        <form action="">
+            <p>ID : </p>
+            <div>
+                <label for="username">Username :</label>
+                <input type="text" name="username" value="" style="border-bottom: 1px black solid;">
+            </div>
+            <div>
+                <label for="fullname">Full Name :</label>
+                <input type="text" name="fullname" value="" style="border-bottom: 1px black solid;">
+            </div>
+            <div>
+                <label for="email">Email :</label>
+                <input type="text" name="email" value="" style="border-bottom: 1px black solid;">
+            </div>
+            <div>
+                <label for="nrp">NRP :</label>
+                <input type="text" name="nrp" value="" style="border-bottom: 1px black solid;">
+            </div>
+            <div>
+                <label for="status">Status :</label>
+                <select name="status">
+                    <option value="true">TRUE</option>
+                    <option value="false">FALSE</option>
+                </select>
+            </div>
+            <p>Created at: </p>
+            <p>Updated at: </p>
+        </form>
+        <form>
+            <table>
+                <thead>
+                    <tr><th colspan="5" class="border p-2">Anggota</th></tr>
+                    <tr>
+                        <th class="border p-2">Periode</th>
+                        <th class="border p-2">Divisi</th>
+                        <th class="border p-2">Role</th>
+                        <th class="border p-2">Display Photo</th>
+                        <th class="border p-2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="border p-2"></th>
+                        <th class="border p-2"></th>
+                        <th class="border p-2"></th>
+                        <th class="border p-2"></th>
+                        <th class="border p-2"><button>Edit</button> | <button>Delete</button></th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        </div>
 </div>
 
-<div>
-<form action="">
-    <p>ID : </p>
-    <div>
-        <label for="username">Username :</label>
-        <input type="text" name="username" value="">
-    </div>
-    <div>
-        <label for="fullname">Full Name :</label>
-        <input type="text" name="fullname" value="">
-    </div>
-    <div>
-        <label for="email">Email :</label>
-        <input type="text" name="email" value="">
-    </div>
-    <div>
-        
-    </div>
-</form>
-</div>
+
 <script>
 $('.edit-btn').click(function (e) { 
     e.preventDefault();
     let id = $(this).data('id');
-    // alert(id);
     
     $.ajax({
         type: "GET",
         url: "/dashboard/editMember/by?id="+id,
         success: function (response) {
-            $('#tableUsers').html();
+            console.log(response['user']);
+            $('#tableUsers').attr("hidden",true);
+
 
         }
     });
