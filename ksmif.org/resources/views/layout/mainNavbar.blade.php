@@ -16,7 +16,7 @@
         </div>
         <div class="m-2.5 h-fit">
             @if($data['auth'])
-            <a id="dashboard" href="/dashboard" class="bg-black text-white p-2 rounded-2xl">
+            <a id="dashboard" href="/dashboard/editMember" class="bg-black text-white p-2 rounded-2xl">
                 Dashboard
             </a>
             @else    
@@ -45,7 +45,7 @@
                 <p>Bursa Soal</p>
             </a>
             @if ($data['auth'])
-            <a id="dashboard" href="/dashboard" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
+            <a id="dashboard" href="/dashboard/editMember" class="nav-link flex p-2.5 w-full rounded-2xl border-b-2">
                 Dashboard
             </a>
             @else  

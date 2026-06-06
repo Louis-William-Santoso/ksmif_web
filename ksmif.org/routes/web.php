@@ -15,4 +15,6 @@ Route::get('/bursa-soal/by', [MainController::class, 'bursaSoalBy']);
 Route::post('/user-login', [UserLog::class, 'userLogin']);
 
 //dashboad
-Route::get('/dashboard', [UserLog::class, 'dashboard'])->middleware('checkMember');
+Route::get('/dashboard/editMember', [UserLog::class, 'editMember'])->middleware('checkMember');
+Route::get('/dashboard/editMember/by', [UserLog::class, 'editMemberGetData'])->middleware('checkMember');
+Route::patch('/dashboard/editMember/by',[UserLog::class, 'editMemberPatch'])->middleware('checkMember');

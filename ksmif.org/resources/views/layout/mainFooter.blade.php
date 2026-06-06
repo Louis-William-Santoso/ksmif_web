@@ -52,7 +52,7 @@ function responsiveDocs(){
         $('#mobile-nav').attr('hidden', '');
         $('#desktop-nav').removeAttr('hidden');
         $('#mobile-nav-menu').attr('hidden', 'true');
-        $('footer').addClass('flex').css();
+        $('footer').addClass('flex');
     }
     
     if(winHeight<600){

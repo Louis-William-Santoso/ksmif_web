@@ -27,7 +27,7 @@ class UserLog
                     'token'=> $token
                     ];
             }else{throw new Exception("Invalid username or password",0);}
-            return redirect("/dashboard",302)->with($data);
+            return redirect("/dashboard/editMember",302)->with($data);
             // return response()->json($data);
         }catch(Exception $ex){
             $data = ['err' => $ex->getMessage()];
@@ -36,22 +36,46 @@ class UserLog
         }
     }
 
-    function dashboard(){
+    function editMember(){
         try{
             $now = (time() <= strtotime('01-09-2026')) ? '2025':'2026';
             $member      = User::join('members', 'users.id', '=', 'members.users_id')
                             ->where('period', $now) 
                             ->get();
             $allPeriode  = Members::pluck('period')->unique()->toArray();
-            $allDivision = ['ALL','BPH', 'IRD', 'PRD', 'HRDD', 'CDD'];
+            $allDivision = ['None','BPH', 'IRD', 'PRD', 'HRDD', 'CDD'];
+            $allRole     = ['Koor', 'WaKoor', 'Anggota','Ketua','Wakil Ketua', 'Sekretaris', 'Bendahara'];
             $data = [
                 'userLogin'  => Auth::user(),
                 'member'     => $member,
                 'allPeriode' => $allPeriode,
-                'allDivision'=> $allDivision
+                'allDivision'=> $allDivision,
+                'allRole'    => $allRole
             ];
-            return view('dashboard.dataUser', compact('data'));
+            return view('dashboard.editMember', compact('data'));
             // return response()->json($data);
+        }catch(Exception $ex){
+            $data = ['err' => $ex->getMessage()];
+            return view("errors.{$ex->getCode()}",compact('data'));
+        }
+    }
+
+    function editMemberGetData(Request $req){
+        try{
+            $id = $req->query('id');
+            $user = User::with('members')
+                    ->find($id);
+            $data = ['user' => $user];
+            return response()->json($data);
+        }catch(Exception $ex){
+            $data = ['err' => $ex->getMessage()];
+            return view("errors.{$ex->getCode()}",compact('data'));
+        }
+    }
+
+    function editMemberPatch(Request $req){
+        try{
+            
         }catch(Exception $ex){
             $data = ['err' => $ex->getMessage()];
             return view("errors.{$ex->getCode()}",compact('data'));

@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-     @vite('resources/css/app.css')
+    <script src="/lib/jquery.js"></script>
+    @vite('resources/css/app.css')
 </head>
 <body>
-    <div class="flex flex-row h-full">
+    <div class="flex flex-row">
         <div class="basis-40 border-r">
             @include('dashboard.layout.navbar')
         </div>
-        <div class="basis-full">
+        <div class="basis-full overflow-scroll">
             @yield('content')
         </div>
     </div>
