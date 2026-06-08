@@ -49,72 +49,81 @@
                     <td class="border p-2 max-w-56"><img src="{{$i['display_photo']}}" alt=""></td>
                     <td class="border p-2  max-w-32">{{$i['NRP']}}</td>
                     <td class="border p-2 ">{{$i['email']}}</td>
-                    <td class="border p-2 max-w-8"> <select name="division" id="">
-                        @foreach($data['allDivision'] as $item)
-                            @if($i['division']===$item)
-                            <option value="{{$item}}" selected>{{$item}}</option>    
-                            @else
-                            <option value="{{$item}}">{{$item}}</option>
-                            @endif
-                        @endforeach
-                    </select></td>
-                    <td class="border p-2 max-w-32"><select name="role" id="">
-                        @foreach($data['allRole'] as $item)
-                            @if($i['role']===$item)
-                            <option value="{{$item}}" selected>{{$item}}</option>
-                            @else
-                            <option value="{{$item}}">{{$item}}</option>
-                            @endif
-                        @endforeach
-                    </select></td>
-                    <td class="border p-2 max-w-4"><select name="status" id="">
-                        @if(($i['status']??true))
-                        <option value="true" selected>true</option>
-                        <option value="false">false</option>
-                        @else
-                        <option value="true">true</option>
-                        <option value="false" selected>false</option>
+                    <td class="border p-2 max-w-8">{{$i['division']}}</td>
+                    <td class="border p-2 max-w-32">{{$i['role']}}</td>
+                    <td class="border p-2 max-w-4">
+                        @if($i['status']??true)True
+                        @else False
                         @endif
-                    </select></td>
+                    </td>
                     <td class="border p-2">
-                        <button class='edit-btn' type="button" data-id="{{$i['id']}}">EDIT</button>
+                        <button class='edit-btn border-b' type="button" data-id="{{$i['id']}}">EDIT</button>
                     </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
-    <div hidden>
-        <form action="">
-            <p>ID : </p>
-            <div>
-                <label for="username">Username :</label>
-                <input type="text" name="username" value="" style="border-bottom: 1px black solid;">
-            </div>
-            <div>
-                <label for="fullname">Full Name :</label>
-                <input type="text" name="fullname" value="" style="border-bottom: 1px black solid;">
-            </div>
-            <div>
-                <label for="email">Email :</label>
-                <input type="text" name="email" value="" style="border-bottom: 1px black solid;">
-            </div>
-            <div>
-                <label for="nrp">NRP :</label>
-                <input type="text" name="nrp" value="" style="border-bottom: 1px black solid;">
-            </div>
-            <div>
-                <label for="status">Status :</label>
-                <select name="status">
-                    <option value="true">TRUE</option>
-                    <option value="false">FALSE</option>
-                </select>
-            </div>
-            <p>Created at: </p>
-            <p>Updated at: </p>
-        </form>
-        <form>
-            <table>
+    <div id="editDataUser" hidden>
+    </div>
+</div>
+
+
+<script>
+let user;
+$('.edit-btn').click(function (e) { 
+    e.preventDefault();
+    let id = $(this).data('id');
+    
+    $.ajax({
+        type: "GET",
+        url: "/dashboard/editMember/by?id="+id,
+        success: function (response) {
+            user = response.user;
+            let userStatus;
+
+            if(user.status != 1){
+                userStatus =
+                `<option value="true">TRUE</option>
+                <option value="false" selected >FALSE</option>`;
+            }else{
+                userStatus =
+                `<option value="true" selected >TRUE</option>
+                <option value="false">FALSE</option>`;
+            }
+
+            let formEditUser =
+            `<form action="/dashboard/editMember/by?user-id=${user.id}" method="POST">
+                <p>ID : ${user.id}</p>
+                <div>
+                    <label for="fullname">Full Name :</label>
+                    <input type="text" name="fullname" value="${user.full_name}" style="border-bottom: 1px black solid;">
+                </div>
+                <div>
+                    <label for="username">Username :</label>
+                    <input type="text" name="username" value="${user.username}" style="border-bottom: 1px black solid;">
+                </div>
+                <div>
+                    <label for="email">Email :</label>
+                    <input type="text" name="email" value="${user.email}" style="border-bottom: 1px black solid;">
+                </div>
+                <div>
+                    <label for="nrp">NRP :</label>
+                    <input type="text" name="nrp" value="${user.NRP}" style="border-bottom: 1px black solid;">
+                </div>
+                <div>
+                    <label for="status">Status :</label>
+                    <select name="status">
+                        ${userStatus}
+                    </select>
+                </div>
+                <p>Created at: ${user.created_at}</p>
+                <p>Updated at: ${user.updated_at}</p>
+                <button id="saveUser" type="button" class="bg-black p-2 text-white rounded-2xl text-2xl">Save</button>
+                <button id="deleteUser" type="button" style="color:white;background-color:red;padding:0.5rem;">Delete</button>
+            </form>
+            <br>
+             <table>
                 <thead>
                     <tr><th colspan="5" class="border p-2">Anggota</th></tr>
                     <tr>
@@ -126,33 +135,107 @@
                     </tr>
                 </thead>
                 <tbody>
+            `;
+
+            (user.members).forEach(e => {
+                let div ='';
+                let divisionOption = ['BPH', 'IRD', 'PRD', 'HRDD', 'CDD'] ;
+                let roleBPH = ['Ketua','Wakil Ketua', 'Sekretaris', 'Bendahara'];
+                let roleReg = ['Koor', 'WaKoor', 'Anggota'];
+
+                divisionOption.forEach(element => {
+                    if(element === e.division){ div += `<option value="${element}"selected>${element}</option>\n`;}
+                    else{ div += `<option value="${element}">${element}</option>\n`;}
+                });
+
+                let role ='';
+                if(e.division == "BPH"){
+                    roleBPH.forEach(element =>{
+                        if(e.role == element){role += `<option value="${element}"selected>${element}</option>\n`;}
+                        else{ role += `<option value="${element}">${element}</option>\n`;}
+                    });
+                }else{
+                    roleReg.forEach(element =>{
+                        if(e.role == element){role += `<option value="${element}"selected>${element}</option>\n`;}
+                        else{ role += `<option value="${element}">${element}</option>\n`;}
+                    });
+                }
+
+                $('#editDataUser').on('change','.division',function (){  
+                    let idMember = $(this).data('id');
+                    let role ='';
+                    if($(this).val() == 'BPH'){
+                        roleBPH.forEach(element =>{
+                                if(e.role == element){role += `<option value='${element}'selected>${element}</option>\n`;}
+                                else{ role += `<option value='${element}'>${element}</option>\n`;}
+                        });
+                    }else{
+                        roleReg.forEach(element =>{
+                                if(e.role == element){role += `<option value='${element}'selected>${element}</option>\n`;}
+                                else{ role += `<option value='${element}'>${element}</option>\n`;}
+                            });
+                    }
+                    $(`.role[data-id='${idMember}']`).html(role);
+                });
+
+                formEditUser +=
+                `<form action="/dashboard/editMember/by?member-id=${e.id}"> 
                     <tr>
-                        <th class="border p-2"></th>
-                        <th class="border p-2"></th>
-                        <th class="border p-2"></th>
-                        <th class="border p-2"></th>
-                        <th class="border p-2"><button>Edit</button> | <button>Delete</button></th>
+                        <td class="border p-2">
+                            <input type="number" name="periode" value="${e.period}">
+                        </td>
+                        <td class="border p-2">
+                            <select name="division" data-id="${e.id}" class="division">
+                                ${div}
+                            </select>
+                        </td>
+                        <td class="border p-2">
+                            <select name="role" data-id="${e.id}" class="role">
+                                ${role}
+                            </select>    
+                        </td>
+                        <td class="border p-2">
+                            <p>Current photo:${e.display_photo}</p>
+                            <input type="file" accept="image/*" class="border-b">
+                        </td>
+                        <td class="border p-2"><button>Edit</button> | <button>Delete</button></td>
                     </tr>
-                </tbody>
-            </table>
-        </form>
-        </div>
-</div>
+                </form>`;
+            });
+                        
+            formEditUser += "</tbody></table>";
 
-
-<script>
-$('.edit-btn').click(function (e) { 
-    e.preventDefault();
-    let id = $(this).data('id');
-    
-    $.ajax({
-        type: "GET",
-        url: "/dashboard/editMember/by?id="+id,
-        success: function (response) {
-            console.log(response['user']);
             $('#tableUsers').attr("hidden",true);
+            $('#editDataUser').removeAttr('hidden');
+            $('#editDataUser').html(formEditUser);
+        }
+    });
+});
 
+$('#editDataUser').on('click', '#saveUser', function(e){
+    e.preventDefault();
+    let formData = $(this).closest('form').serializeArray().reduce((obj,i)=>{
+        obj[i.name] = i.value;
+        return obj;
+    },{});
+    console.log(formData);
 
+    let sessionId = $('meta[name="session-id"]').attr('content');
+
+    $.ajax({
+        type: "PATCH",
+        url: `/dashboard/editMember/by?user-id=${user.id}`,
+        data: JSON.stringify(formData),
+        dataType: "json",
+        headers:{
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+            // 'ksm-if-session': sessionId
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr) {
+        console.log('Error:', xhr.responseText);
         }
     });
 });

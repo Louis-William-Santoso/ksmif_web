@@ -44,13 +44,11 @@ class UserLog
                             ->get();
             $allPeriode  = Members::pluck('period')->unique()->toArray();
             $allDivision = ['None','BPH', 'IRD', 'PRD', 'HRDD', 'CDD'];
-            $allRole     = ['Koor', 'WaKoor', 'Anggota','Ketua','Wakil Ketua', 'Sekretaris', 'Bendahara'];
             $data = [
                 'userLogin'  => Auth::user(),
                 'member'     => $member,
                 'allPeriode' => $allPeriode,
                 'allDivision'=> $allDivision,
-                'allRole'    => $allRole
             ];
             return view('dashboard.editMember', compact('data'));
             // return response()->json($data);
@@ -75,7 +73,23 @@ class UserLog
 
     function editMemberPatch(Request $req){
         try{
+            $id       = $req->query('user-id');
+            $username = $req->input('username');
+            $full_name= $req->input('fullname');
+            $nrp      = $req->input('nrp');
+            $email    = $req->input('email');
+            $status   = $req->input('status');
             
+            $user = User::find($id);
+            $user->username = $username;
+            $user->full_name= $full_name;
+            $user->NRP      = $nrp;
+            $user->email    = $email;
+            $user->status   = (bool)$status;
+            
+            $tes = $user->save();
+
+            return response()->json($tes);
         }catch(Exception $ex){
             $data = ['err' => $ex->getMessage()];
             return view("errors.{$ex->getCode()}",compact('data'));
