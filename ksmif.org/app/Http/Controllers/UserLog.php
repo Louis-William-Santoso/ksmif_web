@@ -73,7 +73,7 @@ class UserLog
 
     function editMemberPatch(Request $req){
         try{
-            $id       = $req->query('user-id');
+            $id       = $req->query('id');
             $username = $req->input('username');
             $full_name= $req->input('fullname');
             $nrp      = $req->input('nrp');

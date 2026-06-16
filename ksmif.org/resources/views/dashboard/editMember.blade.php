@@ -220,24 +220,32 @@ $('#editDataUser').on('click', '#saveUser', function(e){
     },{});
     console.log(formData);
 
-    let sessionId = $('meta[name="session-id"]').attr('content');
+    let sessionId  = $('meta[name="session-id"]').attr('content');
+    let usrConfirm = confirm("Beneran mau update data nih 👉👈");
 
-    $.ajax({
-        type: "PATCH",
-        url: `/dashboard/editMember/by?user-id=${user.id}`,
-        data: JSON.stringify(formData),
-        dataType: "json",
-        headers:{
-            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-            // 'ksm-if-session': sessionId
-        },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function(xhr) {
-        console.log('Error:', xhr.responseText);
-        }
-    });
+    if(usrConfirm){
+        $.ajax({
+            type: "PATCH",
+            url: `/dashboard/editMember/by?id=${user.id}`,
+            data: JSON.stringify(formData),
+            dataType: "json",
+            headers:{
+                'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                'Content-Type': 'application/json'
+            },
+            success: function (response) {
+                if(response === true){
+                    alert("Data update success!!");
+                    window.location.replace("/dashboard/editMember");
+                }
+            },
+            error: function(xhr) {
+            console.log('Error:', xhr.responseText);
+            }
+        });
+    }else{
+        window.location.replace("/dashboard/editMember");
+    }
 });
 </script>
 @endsection

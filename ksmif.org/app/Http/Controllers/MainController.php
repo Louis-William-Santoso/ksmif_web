@@ -17,6 +17,22 @@ class MainController extends Controller
         return view('welcome', compact('data'));
     }
 
+    private function sortingMember($input,&$target){
+        if($input['role']==="Ketua" || $input['role']==="Koor"){
+            if(isset($target[0])){
+                $temp   = $target[0];
+                $target[0] = $input;
+                $target[]  = $temp;
+            }else{$target[0]=$input;}
+        }else if($input['role']==="Wakil Ketua" || $input['role']==="WaKoor"){
+            if(isset($target[1])){
+                $temp   = $target[1];
+                $target[1] = $input;
+                $target[]  = $temp;
+            }else{$target[1]=$input;}
+        }else{$target[] = $input;}
+    }
+
     function getMember(){
         try{
         $now = (time() <= strtotime('01-09-2026')) ? '2025':'2026';
@@ -29,19 +45,19 @@ class MainController extends Controller
         foreach($member as $item){
             switch($item['division']){
                 case "BPH":
-                    $BPH[] = $item;
+                    $this->sortingMember($item,$BPH);
                     break;
                 case "IRD":
-                    $IRD[] = $item;
+                    $this->sortingMember($item,$IRD);
                     break;
                 case "PRD":
-                    $PRD[] = $item;
+                    $this->sortingMember($item,$PRD);
                     break;
                 case "HRDD":
-                    $HRDD[] = $item;
+                    $this->sortingMember($item,$HRDD);
                     break;
                 case "CDD":
-                    $CDD[] = $item;
+                    $this->sortingMember($item,$CDD);
                     break;
             }
         }
@@ -66,7 +82,7 @@ class MainController extends Controller
             $data=['err'=> $ex->getMessage()];
             return view("errors.{$ex->getCode()}");
         }
-        // return response()->json($datda);
+        // return response()->json($data);
         return view('ourTeam', compact('data'));
     }
 
@@ -85,19 +101,19 @@ class MainController extends Controller
             foreach($member as $item){
                 switch($item['division']){
                     case "BPH":
-                        $BPH[] = $item;
+                        $this->sortingMember($item,$BPH);
                         break;
                     case "IRD":
-                        $IRD[] = $item;
+                        $this->sortingMember($item,$IRD);
                         break;
                     case "PRD":
-                        $PRD[] = $item;
+                        $this->sortingMember($item,$PRD);
                         break;
                     case "HRDD":
-                        $HRDD[] = $item;
+                        $this->sortingMember($item,$HRDD);
                         break;
                     case "CDD":
-                        $CDD[] = $item;
+                        $this->sortingMember($item,$CDD);
                         break;
                 }
             }
@@ -116,7 +132,11 @@ class MainController extends Controller
                            ->where('division', $division)
                            ->get();
             if($member->isEmpty())throw new Exception('',400);
-            $member = [ strtolower($division) => $member];
+            $temp = [];
+            foreach($member as $i){
+                $this->sortingMember($i,$temp);
+            }
+            $member = [ strtolower($division) => $temp];
         }
         
 
