@@ -19,24 +19,24 @@ class MainController extends Controller
     }
 
     private function sortingMember($input,&$target){
-        $priority = [
-            'Ketua'       => 0,
-            'Koor'        => 0,
-            'Wakil Ketua' => 1,
-            'WaKoor'      => 1,
-            'Sekretaris'  => 2,
-            'Bendahara'   => 3,
-            'Anggota'     => 4,
-        ];
-        $target[] = $input;
-        usort($target, function($a, $b) use ($priority){
-            return ($priority[$a['role']] ?? 99) <=> ($priority[$b['role']] ?? 99);
-        });
+    $priority = [
+        'Ketua'       => 0,
+        'Koor'        => 0,
+        'Wakil Ketua' => 1,
+        'WaKoor'      => 1,
+        'Sekretaris'  => 2,
+        'Bendahara'   => 3,
+        'Anggota'     => 4,
+    ];
+    $target[] = $input;
+    usort($target, function($a, $b) use ($priority){
+        return ($priority[$a['role']] ?? 99) <=> ($priority[$b['role']] ?? 99);
+    });
     }
 
     function getMember(){
         try{
-        $now = (time() <= strtotime('01-09-2026')) ? '2025':'2026';
+        $now = now()->month >= 10 ? now()->year : now()->year - 1; 
         $member      = User::join('members', 'users.id', '=', 'members.users_id')
                            ->where('period', $now) 
                            ->get();
