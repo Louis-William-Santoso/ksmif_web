@@ -19,20 +19,20 @@ class MainController extends Controller
     }
 
     private function sortingMember($input,&$target){
-    $priority = [
-        'Ketua'       => 0,
-        'Koor'        => 0,
-        'Wakil Ketua' => 1,
-        'WaKoor'      => 1,
-        'Sekretaris'  => 2,
-        'Bendahara'   => 3,
-        'Anggota'     => 4,
-    ];
-    $target[] = $input;
-    usort($target, function($a, $b) use ($priority){
-        return ($priority[$a['role']] ?? 99) <=> ($priority[$b['role']] ?? 99);
-    });
-}
+        $priority = [
+            'Ketua'       => 0,
+            'Koor'        => 0,
+            'Wakil Ketua' => 1,
+            'WaKoor'      => 1,
+            'Sekretaris'  => 2,
+            'Bendahara'   => 3,
+            'Anggota'     => 4,
+        ];
+        $target[] = $input;
+        usort($target, function($a, $b) use ($priority){
+            return ($priority[$a['role']] ?? 99) <=> ($priority[$b['role']] ?? 99);
+        });
+    }
 
     function getMember(){
         try{

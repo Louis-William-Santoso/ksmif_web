@@ -11,6 +11,7 @@ Route::get('/gallery', [MainController::class, 'gallery']);
 Route::get('/our-team/by',[MainController::class, 'getMemberBy']);
 Route::get('/bursa-soal',[BursaSoalController::class, 'bursaSoal']);
 Route::get('/bursa-soal/by', [BursaSoalController::class, 'bursaSoalBy']);
+Route::get('/playground', [Playground::class, 'playground']);
 
 //User Login/signin
 Route::post('/user-login', [UserLog::class, 'userLogin']);
