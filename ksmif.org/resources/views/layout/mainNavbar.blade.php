@@ -1,4 +1,4 @@
-<nav id="navbar" class="font-['Jersey10'] m-2.5 text-3xl sticky top-2 rounded-2xl z-3">
+<nav id="navbar" class="font-['Jersey10'] m-2.5 text-3xl sticky top-2 rounded-2xl z-8">
     <div id="desktop-nav" class="flex justify-between">
         <div id="desktop-nav-menu" class="flex w-fit border-4 border-dashed rounded-2xl gap-12 backdrop-blur-sm bg-[#ffffff99]">
             <a href="/" class="nav-link flex p-2.5 w-fit rounded-2xl">
@@ -65,7 +65,7 @@
     </div>
 </nav>
 
-<div id="loginPanel" class="fixed top-0 z-7 h-screen w-screen grid grid-cols-1 place-content-center place-items-center backdrop-blur-sm font-['Jersey10'] hidden">
+<div id="loginPanel" class="fixed top-0 z-9 h-screen w-screen grid grid-cols-1 place-content-center place-items-center backdrop-blur-sm font-['Jersey10'] hidden">
     <form id="login" method="POST" action="/user-login" class="bg-white h-96 w-96 border rounded-2xl text-center text-4xl">
         @csrf
         <img id="closeLoginBtn" src="/images/icon/close.svg" alt="closeBtn" class="absolute ml-2 my-2">

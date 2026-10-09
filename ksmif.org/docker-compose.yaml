@@ -51,17 +51,44 @@ services:
       - "3000:3000"
       - "5173:5173"
 
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins_server
-    user: root
+  # jenkins:
+  #   image: jenkins/jenkins:lts
+  #   container_name: jenkins_server
+  #   user: root
+  #   ports:
+  #     - "8080:8080"
+  #     - "50000:50000"
+  #   volumes:
+  #     - ./dockerconfig/jenkins_data:/var/jenkins_home
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - /usr/bin/docker:/usr/bin/docker
+  #     - /usr/libexec/docker/cli-plugins:/usr/libexec/docker/cli-plugins
+  #     - ../:/host-project
+  #   restart: unless-stopped
+
+  woodpecker-server:
+    image: woodpeckerci/woodpecker-server:v3
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - 8080:8000
     volumes:
-      - ./dockerconfig/jenkins_data:/var/jenkins_home
+      - ./dockerconfig/woodpecker-server:/var/lib/woodpecker/
+    environment:
+      - WOODPECKER_OPEN=true
+      - WOODPECKER_HOST=${WOODPECKER_HOST}
+      - WOODPECKER_GITHUB=true
+      - WOODPECKER_GITHUB_CLIENT=${WOODPECKER_GITHUB_CLIENT}
+      - WOODPECKER_GITHUB_SECRET=${WOODPECKER_GITHUB_SECRET}
+      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}
+
+  woodpecker-agent:
+    image: woodpeckerci/woodpecker-agent:v3
+    command: agent
+    restart: always
+    depends_on:
+      - woodpecker-server
+    volumes:
+      - ./dockerconfig/woodpecker-agent:/etc/woodpecker
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
-      - /usr/libexec/docker/cli-plugins:/usr/libexec/docker/cli-plugins
-      - ../:/host-project
-    restart: unless-stopped
+    environment:
+      - WOODPECKER_SERVER=woodpecker-server:9000
+      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}

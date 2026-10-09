@@ -15,6 +15,7 @@
 
     <link rel="icon" type="image/x-icon" href="images/icon/tab-icon.png" />
     <script src="/lib/jquery.js"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeJ6MstAAAAAATa140lGtWzMrna8zrPatO65r5H"></script>
     <script type="importmap">
         {
             "imports": {
@@ -78,4 +79,12 @@
     @include('layout.mainFooter')
 </body>
 <script src="/lib/console.js"></script>
+<script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LeJ6MstAAAAAATa140lGtWzMrna8zrPatO65r5H', {action: 'LOGIN'});
+    });
+  }
+</script>
 </html>
