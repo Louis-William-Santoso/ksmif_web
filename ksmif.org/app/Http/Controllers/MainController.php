@@ -36,7 +36,7 @@ class MainController extends Controller
 
     function getMember(){
         try{
-        $now = now()->month >= 10 ? now()->year : now()->year - 1; 
+        $now = now()->month >= 12 ? now()->year : now()->year - 1; 
         $member      = User::join('members', 'users.id', '=', 'members.users_id')
                            ->where('period', $now) 
                            ->get();
