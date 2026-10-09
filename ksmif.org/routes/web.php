@@ -30,6 +30,9 @@ Route::get('/dashboard/editBursa', [BursaSoalController::class, 'editBursa'])->m
 Route::post('/dashboard/editBursa', [BursaSoalController::class, 'uploadSoal'])->middleware('checkMember');
 Route::delete('/dashboard/editBursa',[BursaSoalController::class, 'deleteSoal'])->middleware('checkMember');
 
+// countdown Event
+Route::post('/countdown/send',[CountdownEvent::class, 'countdown']);
+
 //dashboard adminer db
 Route::match(['get','post'],'/dashboard/database',[MainController::class, 'database'])->middleware('checkMember');
 
