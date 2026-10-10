@@ -77,6 +77,36 @@
     @includeWhen($data['navbar'] != "homepage", 'layout.mainNavbar')
     @yield('content')
     @include('layout.mainFooter')
+
+    {{-- Popup countdown KSMIF --}}
+    @include('layout.countdown')
+    <script>
+    window.addEventListener('load', function () {
+    const popup = document.getElementById('ksmif-countdown-popup');
+
+    if (!popup) return;
+
+    const loading = document.querySelector('#loading, .loading, .loader');
+
+    function showCountdown() {
+        if (sessionStorage.getItem('ksmif_countdown_closed') === '1') {
+            popup.remove();
+            return;
+        }
+
+        popup.style.display = 'flex';
+    }
+
+    if (loading) {
+        loading.addEventListener('transitionend', showCountdown, { once: true });
+        loading.addEventListener('animationend', showCountdown, { once: true });
+
+        setTimeout(showCountdown, 5000);
+    } else {
+        showCountdown();
+    }
+});
+</script>
 </body>
 <script src="/lib/console.js"></script>
 <script>
